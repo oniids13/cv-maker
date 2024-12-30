@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 2px black solid;
+    background-color: #c0392b;
+}
+
+.gen-info {
+    display: flex;
+    padding: 20px;
+}
+
+.gen-info-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 30vw;
+    border-right: 1px solid black;
+}
+
+.gen-info-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    width: 70vw;
+    text-align: center;
+    justify-content: center;
+}
+.submit {
+    width: 10%;
+    margin-bottom: 10px;
+}
+
+.edit {
+    width: 10%;
+    margin-top: 10px;
+}
+
+input {
+    margin-top: 5px;
+}
