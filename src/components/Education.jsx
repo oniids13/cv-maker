@@ -9,11 +9,12 @@ function Education() {
       fieldOfStudy: "",
       fromYear: "",
       toYear: "",
-      isEditing: true,
+      submitted: false,
     },
   ]);
 
   const [details, setDetails] = useState([]);
+  const [editingIndex, setEditingIndex] = useState(null)
 
   function handleChange(e, index) {
     const { name, value } = e.target;
@@ -28,24 +29,30 @@ function Education() {
   function handleSubmit(e, index) {
     e.preventDefault();
 
-    setDetails((prevDetails) => [
-      ...prevDetails,
-      { ...formValues[index] },
-    ]);
-
     setFormValues((prev) =>
-      prev.map((form, i) =>
-        i === index ? { ...form, isEditing: false } : form
+      prev.map((form, i) => 
+        i === index ? {...form, submitted: true} : form
       )
-    );
+    )
+
+    if (editingIndex === null) {
+      setDetails((prevDetails) => [
+        ...prevDetails,
+        { ...formValues[index] },
+      ]);
+    } else {
+      setDetails((prev) =>
+        prev.map((detail, i) =>
+          i === editingIndex ? formValues[index] : detail
+        )
+      );
+
+      setEditingIndex(null)
+    }
   }
 
   function handleEdit(index) {
-    setFormValues((prev) =>
-      prev.map((form, i) =>
-        i === index ? { ...form, isEditing: true } : form
-      )
-    );
+    setEditingIndex(index)
   }
 
   function addNewForm() {
@@ -57,14 +64,13 @@ function Education() {
         fieldOfStudy: "",
         fromYear: "",
         toYear: "",
-        isEditing: true,
       },
     ]);
   }
 
   function handleDelete(index) {
     setFormValues((prev) => prev.filter((_, i) => i !== index));
-    setDetails((prevDetails) => prevDetails.filter((_, i) => i !== index));
+    setDetails((prev) => prev.filter((_, i) => i !== index));
   }
 
   return (
@@ -80,7 +86,7 @@ function Education() {
                   name="school"
                   values={form.school}
                   handleChange={(e) => handleChange(e, index)}
-                  isDisabled={!form.isEditing}
+                  isDisabled={form.submitted && editingIndex !== index}
                 />
                 <label>
                   Type of Study:
@@ -89,7 +95,8 @@ function Education() {
                     name="studyType"
                     value={form.studyType}
                     onChange={(e) => handleChange(e, index)}
-                    disabled={!form.isEditing}
+                    disabled={form.submitted && editingIndex !== index}
+                    required
                   >
                     <option value="Undergrad">Undergrad</option>
                     <option value="Bachelors Degree">Bachelors Degree</option>
@@ -103,52 +110,49 @@ function Education() {
                   name="fieldOfStudy"
                   values={form.fieldOfStudy}
                   handleChange={(e) => handleChange(e, index)}
-                  isDisabled={!form.isEditing}
+                  isDisabled={form.submitted && editingIndex !== index}
                 />
                 <Year
                   label="From year"
                   name="fromYear"
                   value={form.fromYear}
                   handleChange={(e) => handleChange(e, index)}
-                  isDisabled={!form.isEditing}
+                  isDisabled={form.submitted && editingIndex !== index}
                 />
                 <Year
                   label="To year"
                   name="toYear"
                   value={form.toYear}
                   handleChange={(e) => handleChange(e, index)}
-                  isDisabled={!form.isEditing}
+                  isDisabled={form.submitted && editingIndex !== index}
                 />
-                {form.isEditing ? (
+                {!form.submitted ? (
                   <button className="submit" type="submit">
                     Submit
                   </button>
                 ) : (
-                  ""
+                  editingIndex === index && (
+                    <button className="submit" type="submit">
+                      Save
+                    </button>
+                  )
                 )}
               </form>
-              {!form.isEditing ? (
+              {form.submitted && editingIndex !== index && (
                 <>
-                  <button className="edit" onClick={() => handleEdit(index)}>
-                    Edit
-                  </button>
-                  <br />
-                  <button
-                    className="delete"
-                    onClick={() => handleDelete(index)}
-                  >
-                    Delete
-                  </button>
+                    <button className="edit" onClick={() => handleEdit(index)}>Edit</button>
+                    <br />
+                    {details.length > 1 && <button className="delete" onClick={() => handleDelete(index)}>Delete</button> }
                 </>
-              ) : (
-                ""
-              )}
+                )}
             </div>
           ))}
-     
-          <button className="add" onClick={addNewForm}>
+          {details.length > 0 ? (
+            <button className="add" onClick={addNewForm}>
             Add Education
           </button>
+          ) : ''}
+          
   
       </div>
 
@@ -187,6 +191,7 @@ function Input({ label, type, name, values, handleChange, isDisabled }) {
         value={values}
         onChange={handleChange}
         disabled={isDisabled}
+        required
       />
     </label>
   );
@@ -206,6 +211,7 @@ function Year({ label, name, value, handleChange, isDisabled }) {
         min="1970"
         max="2099"
         step="1"
+        required
       />
     </label>
   );

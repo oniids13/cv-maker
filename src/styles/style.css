@@ -16,19 +16,21 @@ header {
     border-bottom: 1px solid;
 }
 
-.gen-info-form, .work-info-form{
+.gen-info-form{
     width: 30vw;
     padding: 20px;
     border-right: 1px solid black;
 }
 
-.educ-info-form {
+.educ-info-form,
+.work-info-form {
     width: 30vw;
     padding: 20px;
 }
 
 
-.educ-info-container {
+.educ-info-container,
+.work-info-container {
     display: flex;
     flex-direction: column;
     max-height: 420px;
@@ -37,31 +39,40 @@ header {
     border-right: 1px solid black;
 }
 
-.educ-info-container::-webkit-scrollbar {
+.educ-info-container::-webkit-scrollbar,
+.work-info-container::-webkit-scrollbar {
     width: 0;
 }
 
-.educ-info-container h2 {
+.educ-info-container h2,
+.work-info-container h2 {
     padding-left: 20px;
     padding-top: 10px;
 }
 
-.educ-info-container .add {
+.educ-info-container .add,
+.work-info-container .add {
     margin-left: 20px;
     margin-bottom: 10px;
 }
 
-.educ-info-sec {
+.educ-info-sec,
+.work-info-sec {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 30px;
+    max-width: 300px;
 }
 
-.educ-field-container {
+.educ-field-container,
+.work-field-container {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: start;
     padding-top: 20px;
+    gap: 5rem;
+    
 }
 
 .gen-info-form h2 {
