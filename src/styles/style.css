@@ -13,15 +13,56 @@ header {
 
 .gen-info, .educ-info, .work-info {
     display: flex;
+    border-bottom: 1px solid;
 }
 
-.gen-info-form, .educ-info-form, .work-info-form {
-    background-color: #ecf0f1;
+.gen-info-form, .work-info-form{
+    width: 30vw;
+    padding: 20px;
     border-right: 1px solid black;
-    width: 20vw;
+}
+
+.educ-info-form {
+    width: 30vw;
     padding: 20px;
 }
 
+
+.educ-info-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 420px;
+    width: auto;
+    overflow-y: auto;
+    border-right: 1px solid black;
+}
+
+.educ-info-container::-webkit-scrollbar {
+    width: 0;
+}
+
+.educ-info-container h2 {
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.educ-info-container .add {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.educ-info-sec {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.educ-field-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
 
 .gen-info-form h2 {
     padding-bottom: 10px;
@@ -36,25 +77,58 @@ header {
     gap: 10px;
 }
 
-.gen-info-field, .educ-info-field, .work-info-field {
+
+.educ-info-field, .work-info-field {
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 20px;
-    width: 70vw;
+    width: 70%;
     justify-content: start;
-    border-bottom: 1px black solid;
     text-align: left;
 }
+
+.gen-info-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    gap: 10px;
+}
+
+
 .submit {
-    width: 20%;
+    width: 30%;
+    background-color: green;
+    border: none;
 }
 
 .edit {
-    width: 20%;
+    width: 30%;
     margin-top: 10px;
+    background-color: blue;
+    border: none;
+}
+
+.add {
+    width: 30%;
+    margin-top: 5px;
+    background-color: lightblue;
+    border: none;
+}
+
+.delete {
+    width: 30%;
+    margin-top: 10px;
+    background-color: red;
+    border: none;
 }
 
 input {
     margin-top: 5px;
+}
+
+.details {
+    display: flex;
 }

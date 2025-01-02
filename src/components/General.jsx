@@ -2,7 +2,6 @@ import { useState } from "react"
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import Avatar from '@mui/material/Avatar';
 
 
@@ -98,19 +97,17 @@ function General() {
                  </div>
                 {details ? (
                     <div className="gen-info-field">
-                        <div>
-                        <Avatar> {details.fName[0]}{details.lName[0]}</Avatar>
+                            <Avatar> {details.fName[0]}{details.lName[0]}</Avatar>
                             <h1>{details.fName} {details.lName}</h1>
-                        </div>
-                        <div>
+                        <div className="details">
                             <LocalPhoneOutlinedIcon />
                             <Contact info={details.phone} />
                         </div>
-                        <div>
+                        <div className="details"> 
                             <EmailOutlinedIcon />
                             <Contact info={details.email} />
                         </div>
-                        <div>
+                        <div className="details">
                             <HomeOutlinedIcon />
                             <Contact info={details.address} />
                         </div>
