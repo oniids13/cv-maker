@@ -1,5 +1,9 @@
-import { useState, useEffect } from "react"
-
+import { useState } from "react"
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import Avatar from '@mui/material/Avatar';
 
 
 function General() {
@@ -15,9 +19,6 @@ function General() {
     const [details, setDetails] = useState(null)
     const [isEditing, setIsEditing] = useState(true)
 
-    useEffect(() => {
-        console.log("isEditing state updated to:", isEditing);
-      }, [isEditing]);
 
 
     function handleInput(e) {
@@ -38,8 +39,6 @@ function General() {
 
     function handleEdit() {
        setIsEditing(true)
-       console.log(isEditing)
-       
     }
 
 
@@ -99,11 +98,23 @@ function General() {
                  </div>
                 {details ? (
                     <div className="gen-info-field">
-                    <h1>{details.fName} {details.lName}</h1>
-                    <Contact info={details.phone} />
-                    <Contact info={details.email} />
-                    <Contact info={details.address} />
-                </div>
+                        <div>
+                        <Avatar> {details.fName[0]}{details.lName[0]}</Avatar>
+                            <h1>{details.fName} {details.lName}</h1>
+                        </div>
+                        <div>
+                            <LocalPhoneOutlinedIcon />
+                            <Contact info={details.phone} />
+                        </div>
+                        <div>
+                            <EmailOutlinedIcon />
+                            <Contact info={details.email} />
+                        </div>
+                        <div>
+                            <HomeOutlinedIcon />
+                            <Contact info={details.address} />
+                        </div>
+                    </div>
                 ) : (
                     ""
                 )}

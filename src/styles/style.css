@@ -11,35 +11,47 @@ header {
     background-color: #c0392b;
 }
 
-.gen-info {
+.gen-info, .educ-info, .work-info {
     display: flex;
+}
+
+.gen-info-form, .educ-info-form, .work-info-form {
+    background-color: #ecf0f1;
+    border-right: 1px solid black;
+    width: 20vw;
     padding: 20px;
 }
 
-.gen-info-form form {
+
+.gen-info-form h2 {
+    padding-bottom: 10px;
+}
+
+
+.gen-info-form form,
+.educ-info-form form,
+.work-info-form form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 30vw;
-    border-right: 1px solid black;
 }
 
-.gen-info-field {
+.gen-info-field, .educ-info-field, .work-info-field {
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 20px;
     width: 70vw;
-    text-align: center;
-    justify-content: center;
+    justify-content: start;
+    border-bottom: 1px black solid;
+    text-align: left;
 }
 .submit {
-    width: 10%;
-    margin-bottom: 10px;
+    width: 20%;
 }
 
 .edit {
-    width: 10%;
+    width: 20%;
     margin-top: 10px;
 }
 

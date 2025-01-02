@@ -1,6 +1,8 @@
 import '../styles/style.css'
 import Header from './Header.jsx'
 import General from './General.jsx'
+import Education from './Education.jsx'
+import Experience from './Work.jsx'
 
 
 function App() {
@@ -9,6 +11,8 @@ function App() {
     <>
     <Header />
     <General />
+    <Education />
+    <Experience />
     </>
     )
     
