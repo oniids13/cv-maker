@@ -3,6 +3,7 @@ import Header from './Header.jsx'
 import General from './General.jsx'
 import Education from './Education.jsx'
 import Experience from './Work.jsx'
+import Footer from './Footer.jsx'
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <General />
     <Education />
     <Experience />
+    <Footer />
     </>
     )
     

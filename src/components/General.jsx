@@ -3,6 +3,7 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Avatar from '@mui/material/Avatar';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 
 
 function General() {
@@ -10,6 +11,7 @@ function General() {
     const [formValues, setFormValues] = useState({
         fName: '',
         lName: '',
+        jobtTitle: '',
         phone: '',
         email: '',
         address: '',
@@ -44,7 +46,7 @@ function General() {
     return (
         <div className="gen-info">
             <div className="gen-info-form">
-                <h2>General Information</h2>
+                <h2 className="form-title">General Information</h2>
                      <form onSubmit={handleSubmit}>
                      <Input 
                      label="First Name"
@@ -59,6 +61,14 @@ function General() {
                      type="text"
                      name="lName"
                      values={formValues.lName}
+                     handleChange={handleInput}
+                     isDisabled={!isEditing}
+                     />
+                     <Input 
+                     label="Job Title"
+                     type="text"
+                     name="jobTitle"
+                     values={formValues.jobTitle}
                      handleChange={handleInput}
                      isDisabled={!isEditing}
                      />
@@ -97,8 +107,12 @@ function General() {
                  </div>
                 {details ? (
                     <div className="gen-info-field">
-                            <Avatar> {details.fName[0]}{details.lName[0]}</Avatar>
+                            <Avatar sx={{width: 56, height: 56}}> {details.fName[0]}{details.lName[0]}</Avatar>
                             <h1>{details.fName} {details.lName}</h1>
+                        <div className="details">
+                            <WorkOutlineIcon />
+                            <Contact info={details.jobTitle} />
+                        </div>
                         <div className="details">
                             <LocalPhoneOutlinedIcon />
                             <Contact info={details.phone} />
@@ -137,6 +151,7 @@ function Input( {label, type, name, values, handleChange, isDisabled} ) {
             value={values}
             onChange={handleChange}
             disabled={isDisabled}
+            required
              />
         </label>
     )

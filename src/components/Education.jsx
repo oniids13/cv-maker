@@ -76,7 +76,7 @@ function Education() {
   return (
     <div className="educ-info">
       <div className="educ-info-container">
-         <h2>Educational Information</h2>
+         <h2 className="form-title">Educational Information</h2>
           {formValues.map((form, index) => (
             <div key={index} className="educ-info-form">
               <form onSubmit={(e) => handleSubmit(e, index)}>
@@ -161,14 +161,16 @@ function Education() {
       {details.length > 0 && (
         <div className="educ-info-field">
           <SchoolOutlinedIcon />
-          <h2>Educational Details</h2>
+          <h2 className="field-title">Educational Details</h2>
 
               <div className="educ-field-container">
                   {details.map((detail, index) => (
                     <div key={index} className="educ-info-sec">
                       <h3>{detail.school}</h3>
                       <Contact info={detail.studyType} />
-                      <Contact info={detail.fieldOfStudy} />
+                      <em>
+                        <Contact info={detail.fieldOfStudy} />
+                      </em>
                       <Contact info={`From: ${detail.fromYear}`} />
                       <Contact info={`To: ${detail.toYear}`} />
                     </div>

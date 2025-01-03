@@ -1,6 +1,5 @@
 import { useState } from "react"
-import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
-
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 
 
 function Experience() {
@@ -81,7 +80,7 @@ function Experience() {
     return (
         <div className="work-info">
             <div className="work-info-container">
-                <h2>Work Experience</h2>
+                <h2 className="form-title">Work Experience</h2>
                 {formValues.map((form, index) => (
                      <div key={index} className="work-info-form">
                      <form onSubmit={(e) => handleSubmit(e, index)}>
@@ -149,14 +148,16 @@ function Experience() {
            
             {details.length > 0 && (
                     <div className="work-info-field">
-                        <WorkOutlineOutlinedIcon />
-                        <h2>Work Experience</h2>
+                        <WorkHistoryIcon />
+                        <h2 className="field-title">Work Experience</h2>
 
                         <div className="work-field-container">
                             {details.map((detail, index) => (
                                 <div key={index} className="work-info-sec">
                                     <h3>{detail.position}</h3>
-                                    <Contact info={detail.company} />
+                                    <em>
+                                        <Contact info={detail.company} />
+                                    </em>
                                     <Contact info={detail.description} />
                                     <Contact info={`From: ${detail.fromYear}`} />
                                     <Contact info={`To: ${detail.toYear}`} />
@@ -181,6 +182,7 @@ function Input( {label, type, name, values, handleChange, isDisabled} ) {
             value={values}
             onChange={handleChange}
             disabled={isDisabled}
+            required
              />
         </label>
     )
@@ -200,6 +202,7 @@ function Year({label, name, value, handleChange,isDisabled}) {
             min="1970"
             max="2099"
             step="1"
+            required
         />
         </label>
         
